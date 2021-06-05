@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net5.0</TargetFrameworks>
+        <RootNamespace>OpenMedStack.Infrastructure.Tailf</RootNamespace>
+        <AssemblyName>openmedstack.infrastructure.tailf</AssemblyName>
+        <PackageId>OpenMedStack.Infrastructure.Tailf</PackageId>
+        <PackageTags>OpenMedStack Architecture ASAP Tailf Infrastructure</PackageTags>
+        <PackageReleaseNotes>Packaged with nubian for Debian compatibility.</PackageReleaseNotes>
+        <Description>Tailf for OpenMedStack based applications.</Description>
+        <LangVersion>latest</LangVersion>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+    <Import Project="..\..\shared.proj" />
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\openmedstack.infrastructure.bootstrapping\openmedstack.infrastructure.bootstrapping.csproj" />
+    </ItemGroup>
+</Project>
