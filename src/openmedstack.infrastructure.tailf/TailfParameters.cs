@@ -7,7 +7,10 @@
     public class TailfParameters
     {
         [Option('f', HelpText = "Files to monitor", Required = true, Min = 1)]
-        public IEnumerable<string>? FileNames { get; set; }
+        public IEnumerable<string> FileNames { get; set; } = null!;
+
+        [Option('c', Default = "text/plain", HelpText = "Content type of the lines", Required = false)]
+        public string ContentType { get; set; } = null!;
 
         [Option('d', HelpText = "Url of the upload destination", Required = true)]
         public string Destination { get; set; } = null!;

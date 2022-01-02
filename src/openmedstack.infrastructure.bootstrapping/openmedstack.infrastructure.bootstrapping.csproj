@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
-    <RootNamespace>OpenMedStack.Infrastructure.Bootstrapping</RootNamespace>
-    <AssemblyName>openmedstack.infrastructure.bootstrapping</AssemblyName>
-    <PackageId>OpenMedStack.Infrastructure.Bootstrapping</PackageId>
-    <PackageTags>OpenMedStack Architecture ASAP Bootstrapping Infrastructure</PackageTags>
-    <PackageReleaseNotes>Packaged with nubian for Debian compatibility.</PackageReleaseNotes>
-    <Description>Bootstrapping bindings for OpenMedStack based applications.</Description>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <Import Project="..\..\shared.proj" />
+    <PropertyGroup>
+        <TargetFrameworks>net6.0</TargetFrameworks>
+        <RootNamespace>OpenMedStack.Infrastructure.Bootstrapping</RootNamespace>
+        <AssemblyName>openmedstack.infrastructure.bootstrapping</AssemblyName>
+        <PackageId>OpenMedStack.Infrastructure.Bootstrapping</PackageId>
+        <PackageTags>OpenMedStack Architecture ASAP Bootstrapping Infrastructure</PackageTags>
+        <PackageReleaseNotes>Packaged with nubian for Debian compatibility.</PackageReleaseNotes>
+        <Description>Bootstrapping bindings for OpenMedStack based applications.</Description>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <Import Project="..\..\shared.proj" />
 
-  <ItemGroup>
-    <PackageReference Include="openmedstack" Version="1.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="openmedstack" Version="1.3.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
 
 </Project>

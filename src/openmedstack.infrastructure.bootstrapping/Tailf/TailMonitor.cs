@@ -1,9 +1,8 @@
-﻿using System.Linq;
-
-namespace OpenMedStack.Infrastructure.Bootstrapping.Tailf
+﻿namespace OpenMedStack.Infrastructure.Bootstrapping.Tailf
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -39,6 +38,7 @@ namespace OpenMedStack.Infrastructure.Bootstrapping.Tailf
         {
             await Stop().ConfigureAwait(false);
             _tails.Clear();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -65,7 +65,13 @@
                     _prevLen = 0;
                 }
 
-                await using var stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read, FileShare.Delete | FileShare.ReadWrite);
+                await using var stream = new FileStream(
+                    fi.FullName,
+                    FileMode.Open,
+                    FileAccess.Read,
+                    FileShare.Delete | FileShare.ReadWrite,
+                    4096,
+                    FileOptions.Asynchronous);
                 stream.Seek(_prevLen, SeekOrigin.Begin);
                 using var sr = new StreamReader(stream);
 
@@ -89,22 +95,29 @@
         private async Task MakeTail(int nLines, string path)
         {
             var lines = new List<string>();
-            await using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Delete | FileShare.ReadWrite))
-            using (var sr = new StreamReader(stream))
+            var stream = new FileStream(
+                path,
+                FileMode.Open,
+                FileAccess.Read,
+                FileShare.Delete | FileShare.ReadWrite,
+                4096,
+                FileOptions.Asynchronous);
+            await using (stream.ConfigureAwait(false))
             {
+                using var sr = new StreamReader(stream);
                 string? line;
                 while (null != (line = await sr.ReadLineAsync().ConfigureAwait(false)))
                 {
                     if (LineFilter != null)
                     {
-                        if (LineFilter.IsMatch(line!))
+                        if (LineFilter.IsMatch(line))
                         {
-                            EnqueueLine(nLines, lines, line!);
+                            EnqueueLine(nLines, lines, line);
                         }
                     }
                     else
                     {
-                        EnqueueLine(nLines, lines, line!);
+                        EnqueueLine(nLines, lines, line);
                     }
                 }
             }

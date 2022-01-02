@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openmedstack.infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{61BB89A1-0F13-4A65-BFE6-A2E60AE16C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "openmedstack.infrastructure.tailf.tests", "tests\openmedstack.infrastructure.tailf.tests\openmedstack.infrastructure.tailf.tests.csproj", "{956A61F4-FF2B-438C-8BCC-5E8E692BE9E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openmedstack.infrastructure.tailf.tests", "tests\openmedstack.infrastructure.tailf.tests\openmedstack.infrastructure.tailf.tests.csproj", "{956A61F4-FF2B-438C-8BCC-5E8E692BE9E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F9F0EA99-04C9-4542-86D3-7274CC83E859}"
+	ProjectSection(SolutionItems) = preProject
+		shared.proj = shared.proj
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

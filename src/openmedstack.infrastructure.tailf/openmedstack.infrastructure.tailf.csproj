@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0</TargetFrameworks>
+        <TargetFrameworks>net6.0</TargetFrameworks>
         <RootNamespace>OpenMedStack.Infrastructure.Tailf</RootNamespace>
         <AssemblyName>openmedstack.infrastructure.tailf</AssemblyName>
         <PackageId>OpenMedStack.Infrastructure.Tailf</PackageId>

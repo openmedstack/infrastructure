@@ -38,7 +38,7 @@ namespace OpenMedStack.Infrastructure.Tailf
 
             var parameters = (result as Parsed<TailfParameters>)!.Value;
 
-            if (parameters.FileNames is null || !parameters.FileNames.Any())
+            if (!parameters.FileNames.Any())
             {
                 return;
             }
@@ -55,7 +55,7 @@ namespace OpenMedStack.Infrastructure.Tailf
             {
                 var msg = new HttpRequestMessage(HttpMethod.Post, parameters.Destination)
                 {
-                    Content = new StringContent(line, Encoding.UTF8, "text/plain")
+                    Content = new StringContent(line, Encoding.UTF8, parameters.ContentType)
                 };
                 foreach (var header in headers)
                 {
@@ -72,18 +72,18 @@ namespace OpenMedStack.Infrastructure.Tailf
 
             try
             {
-                var monitor = new TailMonitor(
+                await using var monitor = new TailMonitor(
                     parameters.FileNames,
-                    string.IsNullOrWhiteSpace(parameters.Filter) ? null : new Regex(parameters.Filter, RegexOptions.Compiled),
+                    string.IsNullOrWhiteSpace(parameters.Filter)
+                        ? null
+                        : new Regex(parameters.Filter, RegexOptions.Compiled),
                     parameters.NOfLines,
                     TimeSpan.FromMilliseconds(parameters.PollingInterval),
-                   UploadLine);
+                    UploadLine);
 
                 Console.CancelKeyPress += Console_CancelKeyPress;
                 WaitHandle.Wait();
                 Console.CancelKeyPress -= Console_CancelKeyPress;
-
-                await monitor.DisposeAsync().ConfigureAwait(false);
             }
             catch (Exception)
             {
